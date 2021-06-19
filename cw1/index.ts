@@ -1,17 +1,11 @@
 class StatsApp {
-    checklistern: Array<boolean> = [];
+
     inputsValues: Array<number> = [];
-    removeButtons: NodeList;
     allInputs: NodeListOf<HTMLInputElement>;
 
-    i: number = 0;
-
-    inputs: HTMLInputElement;
-    id: number = 0;
-    addId: number = 0;
-
-    addInput: HTMLInputElement;
+    divContainer: HTMLDivElement;
     div: HTMLDivElement;
+    addInput: HTMLInputElement;
     input: HTMLInputElement;
     removeButton: HTMLButtonElement;
 
@@ -20,10 +14,17 @@ class StatsApp {
     minInput: HTMLInputElement;
     maxInput: HTMLInputElement;
 
+    addInputCheck: number;
+    deletedInputID: number;
+    id: number = 0;
+    addId: number = 0;
+
+
+
+
     constructor() {
         this.startApp();
     }
-
     startApp() {
 
         this.addInpusts();
@@ -35,107 +36,111 @@ class StatsApp {
 
 
     }
-
     checkAddInputValue() {
-        this.id = this.addId;
         this.addId = this.addInput.valueAsNumber;
         if (this.addId < 0) {
             return;
         }
-        else if (this.id < this.addId) {
+        else if (this.addId > this.id) {
+
             this.createInput();
-            this.allInputs = document.querySelectorAll(`.data-input`);
-            this.removeBtn()
 
         } else {
-            this.removeInput();
-            this.allInputs = document.querySelectorAll(`.data-input`);
-
+            this.reduceInputNumber()
         }
+        this.id = this.addId;
 
     }
-
 
     createInput() {
 
-        this.div = document.createElement("div");
-        this.input = document.createElement("input");
-        this.removeButton = document.createElement("button");
 
-        this.div.id = `${this.addId}`;
-        this.div.classList.add(`input-div`);
-
-        this.input.type = "Number";
-        this.input.valueAsNumber = 0;
-        this.input.classList.add('data-input');
-        this.input.id = `data-input${this.addId}`;
-
-        this.removeButton.textContent = "Usuń";
-        this.removeButton.classList.add(`remove-button`);
-        this.removeButton.id = `remove-button${this.addId}`;
-
-        for (let i = 0; i < this.addId; i++) {
+        this.divContainer = document.querySelector('.input-data');
+        this.divContainer.innerHTML = '';
+        // console.log(number);
+        let y = this.addInput.valueAsNumber;
 
 
+        for (let i = 0; i < y; i++) {
+
+            this.div = document.createElement("div");
+            this.div.id = `${i + 1}`;
+            this.div.classList.add(`input-div`);
             document.querySelector(`.input-data`).appendChild(this.div);
-            document.getElementById(`${this.addId}`).appendChild(this.input);
-            document.getElementById(`${this.addId}`).appendChild(this.removeButton);
 
+            this.input = document.createElement("input");
+            this.removeButton = document.createElement("button");
+
+
+
+            this.input.type = "Number";
+            this.input.classList.add('data-input');
+            this.input.id = `data-input${i}`;
+
+            this.removeButton.textContent = "Usuń";
+            this.removeButton.classList.add(`remove-button`);
+            this.removeButton.addEventListener("click", (e: EventTarget) => this.removeBtn(e))
+
+
+            document.getElementById(`${i + 1}`).appendChild(this.input);
+            document.getElementById(`${i + 1}`).appendChild(this.removeButton);
+
+            if (this.inputsValues[i] !== undefined) {
+                this.input.valueAsNumber = this.inputsValues[i];
+            }
+            else if (this.inputsValues[i] === undefined) {
+                this.inputsValues[i] = 0;
+                this.input.valueAsNumber = this.inputsValues[i];
+            }
         }
-
-
+        this.addInputCheck = this.addInput.valueAsNumber;
+        console.log(this.inputsValues);
         this.getInputs()
-
-    }
-    removeBtn() {
-        this.addInput = document.querySelector(`#addinput`);
-        this.removeButtons = document.querySelectorAll(`.remove-button`);
-        let i = 0;
-        this.removeButton = document.querySelector(`#remove-button${this.i + 1}`);
-        this.removeButton.addEventListener("click", function () {
-            // e.target.addEventListener('click', () => {
-            this.parentElement.remove();
-            console.log(this);
-            i = +this.parentElement.getAttribute(`id`);
-            console.log(i);
-        })
-        this.removeButton.addEventListener("click", () => {
-            // console.log(+this.removeButton.parentElement.getAttribute(`id`));
-            this.inputsValues.splice(i - 1, 1);
-        });
-
-        this.i++;
-        // this.removeButton.addEventListener('click', () => {
-        //     this.removeButton.parentElement.remove();
-        // })
-
-
-
-
-        // this.removeButtons.forEach((e) => {
-        //     e.addEventListener('click', () => {
-        //         i--;
-        //         console.log(i);
-
-
-        // console.log(e);
-        // this.inputsValues.splice(+e.parentElement.getAttribute(`id`) - 1, 1);
-        // e.parentElement.remove();
-        // this.addInput.valueAsNumber--;
-        //     })
-        // });
     }
 
-    removeInput() {
-        this.allInputs = document.querySelectorAll(`.data-input`)
-        // console.log(this.allInputs);
-        if (this.allInputs.length == 0) {
-            return;
+    reduceInputNumber() {
+        if (this.addInput.valueAsNumber < this.inputsValues.length) {
+            let i = this.inputsValues.length;
+            let y = this.addInput.valueAsNumber;
+            let sum = i - y;
+            for (let i = 0; i < sum; i++) {
+                console.log('test')
+                this.inputsValues.pop();
+            }
+            this.createInput()
+        } else {
+            this.createInput()
         }
-        this.allInputs.item(this.allInputs.length - 1).parentElement.remove();
-        this.inputsValues.pop();
-        this.watchInputsValue();
     }
+
+    // removeInput() {
+    //     // this.allInputs = document.querySelectorAll(`.data-input`)
+    //     // // console.log(this.allInputs);
+    //     // if (this.allInputs.length == 0) {
+    //     //     return;
+    //     // }
+    //     // this.addInput.valueAsNumber--;
+    //     this.inputsValues.pop();
+    //     this.createInput();
+
+
+    // }
+    removeBtn(e: EventTarget) {
+        const target = e.target;
+        console.log(e.target);
+        this.deletedInputID = target.parentElement.getAttribute(`id`);
+        console.log(this.deletedInputID)
+        this.inputsValues.splice(this.deletedInputID - 1, 1);
+        console.log(this.inputsValues)
+        this.divContainer = document.querySelector('.input-data');
+        this.divContainer.innerHTML = '';
+
+
+        this.addInput.valueAsNumber--;
+        this.checkAddInputValue();
+
+    }
+
     getInputs() {
         this.sumInput = document.querySelector('#sum');
         this.avgInput = document.querySelector('#avg');
@@ -178,5 +183,7 @@ class StatsApp {
         this.minInput.value = min.toString();
         this.maxInput.value = max.toString();
     }
+
+
 }
 const statsApp = new StatsApp();

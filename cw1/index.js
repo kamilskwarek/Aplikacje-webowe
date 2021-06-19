@@ -1,8 +1,6 @@
 var StatsApp = /** @class */ (function () {
     function StatsApp() {
-        this.checklistern = [];
         this.inputsValues = [];
-        this.i = 0;
         this.id = 0;
         this.addId = 0;
         this.startApp();
@@ -16,82 +14,87 @@ var StatsApp = /** @class */ (function () {
         this.addInput.addEventListener('input', function () { return _this.checkAddInputValue(); });
     };
     StatsApp.prototype.checkAddInputValue = function () {
-        this.id = this.addId;
         this.addId = this.addInput.valueAsNumber;
         if (this.addId < 0) {
             return;
         }
-        else if (this.id < this.addId) {
+        else if (this.addId > this.id) {
             this.createInput();
-            this.allInputs = document.querySelectorAll(".data-input");
-            this.removeBtn();
         }
         else {
-            this.removeInput();
-            this.allInputs = document.querySelectorAll(".data-input");
+            this.reduceInputNumber();
         }
+        this.id = this.addId;
     };
     StatsApp.prototype.createInput = function () {
-        this.div = document.createElement("div");
-        this.input = document.createElement("input");
-        this.removeButton = document.createElement("button");
-        this.div.id = "" + this.addId;
-        this.div.classList.add("input-div");
-        this.input.type = "Number";
-        this.input.valueAsNumber = 0;
-        this.input.classList.add('data-input');
-        this.input.id = "data-input" + this.addId;
-        this.removeButton.textContent = "Usuń";
-        this.removeButton.classList.add("remove-button");
-        this.removeButton.id = "remove-button" + this.addId;
-        for (var i = 0; i < this.addId; i++) {
+        var _this = this;
+        this.divContainer = document.querySelector('.input-data');
+        this.divContainer.innerHTML = '';
+        // console.log(number);
+        var y = this.addInput.valueAsNumber;
+        for (var i = 0; i < y; i++) {
+            this.div = document.createElement("div");
+            this.div.id = "" + (i + 1);
+            this.div.classList.add("input-div");
             document.querySelector(".input-data").appendChild(this.div);
-            document.getElementById("" + this.addId).appendChild(this.input);
-            document.getElementById("" + this.addId).appendChild(this.removeButton);
+            this.input = document.createElement("input");
+            this.removeButton = document.createElement("button");
+            this.input.type = "Number";
+            this.input.classList.add('data-input');
+            this.input.id = "data-input" + i;
+            this.removeButton.textContent = "Usuń";
+            this.removeButton.classList.add("remove-button");
+            this.removeButton.addEventListener("click", function (e) { return _this.removeBtn(e); });
+            document.getElementById("" + (i + 1)).appendChild(this.input);
+            document.getElementById("" + (i + 1)).appendChild(this.removeButton);
+            if (this.inputsValues[i] !== undefined) {
+                this.input.valueAsNumber = this.inputsValues[i];
+            }
+            else if (this.inputsValues[i] === undefined) {
+                this.inputsValues[i] = 0;
+                this.input.valueAsNumber = this.inputsValues[i];
+            }
         }
+        this.addInputCheck = this.addInput.valueAsNumber;
+        console.log(this.inputsValues);
         this.getInputs();
     };
-    StatsApp.prototype.removeBtn = function () {
-        var _this = this;
-        this.addInput = document.querySelector("#addinput");
-        this.removeButtons = document.querySelectorAll(".remove-button");
-        var i = 0;
-        this.removeButton = document.querySelector("#remove-button" + (this.i + 1));
-        this.removeButton.addEventListener("click", function () {
-            // e.target.addEventListener('click', () => {
-            this.parentElement.remove();
-            console.log(this);
-            i = +this.parentElement.getAttribute("id");
-            console.log(i);
-        });
-        this.removeButton.addEventListener("click", function () {
-            // console.log(+this.removeButton.parentElement.getAttribute(`id`));
-            _this.inputsValues.splice(i - 1, 1);
-        });
-        this.i++;
-        // this.removeButton.addEventListener('click', () => {
-        //     this.removeButton.parentElement.remove();
-        // })
-        // this.removeButtons.forEach((e) => {
-        //     e.addEventListener('click', () => {
-        //         i--;
-        //         console.log(i);
-        // console.log(e);
-        // this.inputsValues.splice(+e.parentElement.getAttribute(`id`) - 1, 1);
-        // e.parentElement.remove();
-        // this.addInput.valueAsNumber--;
-        //     })
-        // });
-    };
-    StatsApp.prototype.removeInput = function () {
-        this.allInputs = document.querySelectorAll(".data-input");
-        // console.log(this.allInputs);
-        if (this.allInputs.length == 0) {
-            return;
+    StatsApp.prototype.reduceInputNumber = function () {
+        if (this.addInput.valueAsNumber < this.inputsValues.length) {
+            var i = this.inputsValues.length;
+            var y = this.addInput.valueAsNumber;
+            var sum = i - y;
+            for (var i_1 = 0; i_1 < sum; i_1++) {
+                console.log('test');
+                this.inputsValues.pop();
+            }
+            this.createInput();
         }
-        this.allInputs.item(this.allInputs.length - 1).parentElement.remove();
-        this.inputsValues.pop();
-        this.watchInputsValue();
+        else {
+            this.createInput();
+        }
+    };
+    // removeInput() {
+    //     // this.allInputs = document.querySelectorAll(`.data-input`)
+    //     // // console.log(this.allInputs);
+    //     // if (this.allInputs.length == 0) {
+    //     //     return;
+    //     // }
+    //     // this.addInput.valueAsNumber--;
+    //     this.inputsValues.pop();
+    //     this.createInput();
+    // }
+    StatsApp.prototype.removeBtn = function (e) {
+        var target = e.target;
+        console.log(e.target);
+        this.deletedInputID = target.parentElement.getAttribute("id");
+        console.log(this.deletedInputID);
+        this.inputsValues.splice(this.deletedInputID - 1, 1);
+        console.log(this.inputsValues);
+        this.divContainer = document.querySelector('.input-data');
+        this.divContainer.innerHTML = '';
+        this.addInput.valueAsNumber--;
+        this.checkAddInputValue();
     };
     StatsApp.prototype.getInputs = function () {
         this.sumInput = document.querySelector('#sum');
