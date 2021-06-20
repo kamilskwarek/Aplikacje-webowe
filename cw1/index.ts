@@ -113,18 +113,6 @@ class StatsApp {
         }
     }
 
-    // removeInput() {
-    //     // this.allInputs = document.querySelectorAll(`.data-input`)
-    //     // // console.log(this.allInputs);
-    //     // if (this.allInputs.length == 0) {
-    //     //     return;
-    //     // }
-    //     // this.addInput.valueAsNumber--;
-    //     this.inputsValues.pop();
-    //     this.createInput();
-
-
-    // }
     removeBtn(e: EventTarget) {
         const target = e.target;
         console.log(e.target);
