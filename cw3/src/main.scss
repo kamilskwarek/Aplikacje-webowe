@@ -1,0 +1,103 @@
+body {
+  background: lightblue;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.main {
+  margin: auto;
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weatherDivConteiner {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weatherDiv {
+  border: 1px solid white;
+  width: 200px;
+  height: 200px;
+  // display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  color: white;
+  border-radius: 20px;
+}
+
+.cityName {
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid white;
+
+}
+
+.bottomData {
+  width: 200px;
+  height: 150px;
+}
+
+.leftPanel {
+  float: left;
+  height: 150px;
+  width: 100px;
+
+}
+
+.rightPanel {
+  float: left;
+  height: 150px;
+  width: 99px;
+  border-left: 1px solid white;
+}
+
+.sky {
+  width: 100px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+
+.temperture {
+  width: 100px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.pressure {
+  width: 99px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+
+.humidity {
+  width: 99px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
