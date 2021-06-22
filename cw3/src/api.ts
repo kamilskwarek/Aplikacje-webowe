@@ -10,8 +10,6 @@ export class Api {
 
     constructor() {
         this.getCityValue();
-
-
     }
 
     getCityValue() {

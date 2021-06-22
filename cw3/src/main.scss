@@ -11,11 +11,33 @@ body {
 }
 
 .main {
+  color: white;
   margin: auto;
-  width: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cityNameInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  caret-color: white;
+  color: white;
+}
+
+.addCityBtn {
+  border: 1px solid white;
+  outline: none;
+  color: white;
+  background: transparent;
+}
+
+.addCityBtn:active {
+  background-color: rgba($color: #ffffff, $alpha: 0.4);
+  border: 1px solid white;
+  color: white;
 }
 
 .weatherDivConteiner {
@@ -36,7 +58,7 @@ body {
   border-radius: 20px;
 }
 
-.cityName {
+.cityNameDiv {
   width: 200px;
   height: 50px;
   text-align: center;
