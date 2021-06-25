@@ -1,0 +1,220 @@
+body {
+  background: #404041;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.left-panel {
+  color: white;
+  float: left;
+  width: 20%;
+  height: 280px;
+  background-color: #5D5C61;
+
+}
+
+.right-panel {
+
+  width: 80%;
+  height: 98vh;
+  float: left;
+  background-color: #B1A296;
+
+}
+
+.new-note {
+  width: 100%;
+}
+
+.row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+
+.noteRow {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.title-input {
+  border: transparent;
+  background: #938e94;
+  width: 90%;
+  resize: none;
+  box-sizing: border-box;
+  // color: white;s
+
+}
+
+
+.notetext-input {
+  border: transparent;
+  background: #938e94;
+  width: 90%;
+  resize: none;
+  box-sizing: border-box;
+  // color: white;
+  text-align: left;
+}
+
+.color-input {
+  border: transparent;
+  background: #938e94;
+  width: auto;
+  resize: none;
+  box-sizing: border-box;
+  // color: white;
+}
+
+option {
+  color: white;
+}
+
+.addButtonDiv {
+  float: right;
+  margin-right: 10px;
+}
+
+.add-note {
+  background-color: #938e94;
+  border-radius: 5px;
+  border: 1px solid white;
+  font-size: 15px;
+
+  // font: bold;
+  &:active {
+    filter: brightness(0.5);
+  }
+}
+
+
+.note {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  float: left;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+
+  &:hover {
+    transition: 0.5s;
+    filter: brightness(1.4);
+  }
+}
+
+
+.title {
+  font-size: 140%;
+  word-wrap: break-word;
+  float: left;
+}
+
+.note-text {
+  height: 170px;
+  word-wrap: break-word;
+}
+
+
+
+.editNoteBtn {
+  float: right;
+  text-align: right;
+  border-radius: 10px;
+  border: transparent;
+  color: white;
+  background: transparent;
+  outline: 0;
+
+  &:active {
+    filter: brightness(0.5);
+  }
+}
+
+.bottomRow {
+  font-size: 80%;
+  height: 20px;
+
+}
+
+.dateDiv {
+  float: left;
+}
+
+
+.deleteBtn {
+  text-align: right;
+  float: right;
+  border-radius: 10px;
+  border: transparent;
+  color: white;
+  background: transparent;
+  outline: 0;
+
+  &:active {
+
+    filter: brightness(0.5);
+  }
+}
+
+
+.pinnedNotes {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.commonNotes {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.noteType {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+
+
+/* custom checkbox */
+input[type=checkbox].pinCheckbox {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+input[type=checkbox].pinCheckbox+label.css-label {
+  padding-left: 20px;
+  height: 15px;
+  display: inline-block;
+  line-height: 15px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 15px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+input[type=checkbox].pinCheckbox:checked+label.css-label {
+  background-position: 0 -15px;
+}
+
+
+.dark-plus {
+  background-image: url(http://csscheckbox.com/checkboxes/dark-plus.png);
+}

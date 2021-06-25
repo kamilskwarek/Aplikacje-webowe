@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starter</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="left-panel">
+      <form class="new-note">
+        <div class="row">
+          <label>Tytuł
+            <input class="title-input" type="text" value="test">
+          </label>
+        </div>
+
+        <div class="row">
+          <label>Notatka
+            <textarea class="notetext-input" rows="8">test test test </textarea>
+          </label>
+        </div>
+
+        <div class="row">
+          <label> Wybierz kolor
+            <select class="color-input">
+              <option selected disabled hidden>Kolor</option>
+              <option value="#404041" style="background-color: #404041;">brązowy</option>
+              <option value="#662424" style="background-color: #662424;">czerwony</option>
+              <option value="#004e7b" style="background-color: #004e7b;">niebieski</option>
+              <option value="#007b3d" style="background-color: #007b3d;">zielony</option>
+              <option value="#7b4f00" style="background-color: #7b4f00;">pomarańczowy</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row">
+          <label>Przypmnij notatkę
+            <input type="checkbox" id="checkbox15" class="pinCheckbox" />
+            <label for="checkbox15" name="checkbox12_lbl" class="css-label dark-plus"></label>
+          </label>
+          <div class="addButtonDiv">
+            <button class="add-note">Dodaj notatkę</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="right-panel">
+      <div class="noteType">Przypięte Notatki</div>
+      <div class="pinnedNotes">
+
+        <div class="note">
+
+          <div class="noteRow firstRow">
+            <div class="title">
+              tytuł
+            </div>
+            <button class="editNoteBtn">Edytuj</button>
+          </div>
+
+
+          <div class="noteRow note-text">
+            rsedtfyguhijopl[;asdfghjkljhgfqasdfghjkl.,kmjnbf]
+          </div>
+
+
+          <div class="noteRow bottomRow">
+            <div class="dateDiv">
+              24.06.2021, 21:56:57
+            </div>
+
+            <button class="deleteBtn">Usuń</button>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="noteType">Notatki</div>
+      <div class="commonNotes">
+
+        <div class="note">
+
+          <div class="noteRow firstRow">
+            <div class="title">
+              tytuł
+            </div>
+            <button class="editNoteBtn">Edytuj</button>
+          </div>
+
+
+          <div class="noteRow note-text">
+            rsedtfyguhijopl[;asdfghjkljhgfqasdfghjkl.,kmjnbf]
+          </div>
+
+
+          <div class="noteRow bottomRow">
+            <div class="dateDiv">
+              24.06.2021, 21:56:57
+            </div>
+
+            <button class="deleteBtn">Usuń</button>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
