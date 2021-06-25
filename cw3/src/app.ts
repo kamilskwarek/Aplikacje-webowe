@@ -1,8 +1,7 @@
-import { Api } from './api';
-import { Ui } from './ui';
+import { RefreshData } from './refreshData';
+import { CityInput } from './cityInput';
 
 export class App {
-    // api = new Api;
-    ui = new Ui;
-
+    refreshData = new RefreshData;   
+    cityInput = new CityInput;
 }

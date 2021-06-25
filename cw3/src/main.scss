@@ -3,7 +3,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: sans-serif;
   background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
   height: 100%;
   background-repeat: no-repeat;
@@ -56,6 +55,7 @@ body {
   justify-content: flex-start;
   color: white;
   border-radius: 20px;
+  margin: 0px 10px 0px 10px;
 }
 
 .cityNameDiv {
